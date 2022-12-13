@@ -15,7 +15,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: tekton-pipelines
+  name: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -173,7 +173,7 @@ kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: tekton-pipelines-controller
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/component: controller
     app.kubernetes.io/instance: default
@@ -192,7 +192,7 @@ kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: tekton-pipelines-webhook
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/component: webhook
     app.kubernetes.io/instance: default
@@ -221,7 +221,7 @@ kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: tekton-pipelines-leader-election
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -235,7 +235,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: tekton-pipelines-info
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -267,7 +267,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: tekton-pipelines-controller
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/component: controller
     app.kubernetes.io/instance: default
@@ -277,7 +277,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: tekton-pipelines-webhook
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/component: webhook
     app.kubernetes.io/instance: default
@@ -309,7 +309,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tekton-pipelines-controller
-    namespace: tekton-pipelines
+    namespace: cicd
 roleRef:
   kind: ClusterRole
   name: tekton-pipelines-controller-cluster-access
@@ -330,7 +330,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tekton-pipelines-controller
-    namespace: tekton-pipelines
+    namespace: cicd
 roleRef:
   kind: ClusterRole
   name: tekton-pipelines-controller-tenant-access
@@ -347,7 +347,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tekton-pipelines-webhook
-    namespace: tekton-pipelines
+    namespace: cicd
 roleRef:
   kind: ClusterRole
   name: tekton-pipelines-webhook-cluster-access
@@ -372,7 +372,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: tekton-pipelines-controller
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/component: controller
     app.kubernetes.io/instance: default
@@ -380,7 +380,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tekton-pipelines-controller
-    namespace: tekton-pipelines
+    namespace: cicd
 roleRef:
   kind: Role
   name: tekton-pipelines-controller
@@ -390,7 +390,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: tekton-pipelines-webhook
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/component: webhook
     app.kubernetes.io/instance: default
@@ -398,7 +398,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tekton-pipelines-webhook
-    namespace: tekton-pipelines
+    namespace: cicd
 roleRef:
   kind: Role
   name: tekton-pipelines-webhook
@@ -408,7 +408,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: tekton-pipelines-controller-leaderelection
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/component: controller
     app.kubernetes.io/instance: default
@@ -416,7 +416,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tekton-pipelines-controller
-    namespace: tekton-pipelines
+    namespace: cicd
 roleRef:
   kind: Role
   name: tekton-pipelines-leader-election
@@ -426,7 +426,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: tekton-pipelines-webhook-leaderelection
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/component: webhook
     app.kubernetes.io/instance: default
@@ -434,7 +434,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tekton-pipelines-webhook
-    namespace: tekton-pipelines
+    namespace: cicd
 roleRef:
   kind: Role
   name: tekton-pipelines-leader-election
@@ -444,7 +444,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: tekton-pipelines-info
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -520,7 +520,7 @@ spec:
       clientConfig:
         service:
           name: tekton-pipelines-webhook
-          namespace: tekton-pipelines
+          namespace: cicd
 
 ---
 # Copyright 2019 The Tekton Authors
@@ -599,7 +599,7 @@ spec:
       clientConfig:
         service:
           name: tekton-pipelines-webhook
-          namespace: tekton-pipelines
+          namespace: cicd
 
 ---
 # Copyright 2019 The Tekton Authors
@@ -709,7 +709,7 @@ spec:
       clientConfig:
         service:
           name: tekton-pipelines-webhook
-          namespace: tekton-pipelines
+          namespace: cicd
 
 ---
 # Copyright 2022 The Tekton Authors
@@ -1008,7 +1008,7 @@ spec:
       clientConfig:
         service:
           name: tekton-pipelines-webhook
-          namespace: tekton-pipelines
+          namespace: cicd
 
 ---
 # Copyright 2019 The Tekton Authors
@@ -1118,7 +1118,7 @@ spec:
       clientConfig:
         service:
           name: tekton-pipelines-webhook
-          namespace: tekton-pipelines
+          namespace: cicd
 
 ---
 # Copyright 2020 The Tekton Authors
@@ -1139,7 +1139,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: webhook-certs
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/component: webhook
     app.kubernetes.io/instance: default
@@ -1161,7 +1161,7 @@ webhooks:
     clientConfig:
       service:
         name: tekton-pipelines-webhook
-        namespace: tekton-pipelines
+        namespace: cicd
     failurePolicy: Fail
     sideEffects: None
     name: validation.webhook.pipeline.tekton.dev
@@ -1180,7 +1180,7 @@ webhooks:
     clientConfig:
       service:
         name: tekton-pipelines-webhook
-        namespace: tekton-pipelines
+        namespace: cicd
     failurePolicy: Fail
     sideEffects: None
     name: webhook.pipeline.tekton.dev
@@ -1199,7 +1199,7 @@ webhooks:
     clientConfig:
       service:
         name: tekton-pipelines-webhook
-        namespace: tekton-pipelines
+        namespace: cicd
     failurePolicy: Fail
     sideEffects: None
     name: config.webhook.pipeline.tekton.dev
@@ -1308,7 +1308,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-artifact-bucket
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -1343,7 +1343,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-artifact-pvc
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -1373,7 +1373,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-defaults
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -1455,7 +1455,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: feature-flags
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -1540,7 +1540,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: pipelines-info
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -1571,7 +1571,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-leader-election
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -1625,7 +1625,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-logging
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -1678,7 +1678,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-observability
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -1740,7 +1740,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-registry-cert
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
@@ -1767,7 +1767,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tekton-pipelines-controller
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/name: controller
     app.kubernetes.io/component: controller
@@ -1812,17 +1812,17 @@ spec:
       serviceAccountName: tekton-pipelines-controller
       containers:
         - name: tekton-pipelines-controller
-          image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:v0.41.0@sha256:556953d6367b28504b7ad32f58a50b3e3609f60aaddfca3aad217e93465551e7
+          image: v2-zcr.cloudzcp.io/cloudzcp-public/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:v0.41.0
           args: [
             # These images are built on-demand by `ko resolve` and are replaced
             # by image references by digest.
-            "-kubeconfig-writer-image", "gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/kubeconfigwriter:v0.41.0@sha256:4beb725e4c210397c67737e551cf18e1ef716294d566b7927e2bfcc22639a42c", "-git-image", "gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init:v0.41.0@sha256:249081d967c05371fecf9c6ed423fa9cafbfcb2a206c5d5df5d5249859458160", "-entrypoint-image", "gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:v0.41.0@sha256:8dfef3faaa3367221300c783a85e04e59528f07d06b10da707bf827726347e01", "-nop-image", "gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:v0.41.0@sha256:0172171680b81f3c559b8b94e7336f16d3bca59b0af75fdb122770f7b63452a2", "-imagedigest-exporter-image", "gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/imagedigestexporter:v0.41.0@sha256:a26e65e04e6358b1c885d25e8cafd795eb3ea17113fabd32fb7a7f731d754c16", "-pr-image", "gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/pullrequest-init:v0.41.0@sha256:34103fa8d2b08ec094b8a415a52d268d53505ca8ca4b7933457e26db3973be4d", "-workingdirinit-image", "gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/workingdirinit:v0.41.0@sha256:6b4ef00488a962ce152f50a1c6760b1bc95878d3b95ffa3a82e1a36f6c34362f",
+            "-kubeconfig-writer-image", "v2-zcr.cloudzcp.io/cloudzcp-public/tekton-releases/github.com/tektoncd/pipeline/cmd/kubeconfigwriter:v0.41.0", "-git-image", "v2-zcr.cloudzcp.io/cloudzcp-public/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init:v0.41.0", "-entrypoint-image", "v2-zcr.cloudzcp.io/cloudzcp-public/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:v0.41.0", "-nop-image", "v2-zcr.cloudzcp.io/cloudzcp-public/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:v0.41.0", "-imagedigest-exporter-image", "v2-zcr.cloudzcp.io/cloudzcp-public/tekton-releases/github.com/tektoncd/pipeline/cmd/imagedigestexporter:v0.41.0", "-pr-image", "v2-zcr.cloudzcp.io/cloudzcp-public/tekton-releases/github.com/tektoncd/pipeline/cmd/pullrequest-init:v0.41.0", "-workingdirinit-image", "v2-zcr.cloudzcp.io/cloudzcp-public/tekton-releases/github.com/tektoncd/pipeline/cmd/workingdirinit:v0.41.0",
             # This is gcr.io/google.com/cloudsdktool/cloud-sdk:302.0.0-slim
-            "-gsutil-image", "gcr.io/google.com/cloudsdktool/cloud-sdk@sha256:27b2c22bf259d9bc1a291e99c63791ba0c27a04d2db0a43241ba0f1f20f4067f",
+            "-gsutil-image", "v2-zcr.cloudzcp.io/cloudzcp-public/google.com/cloudsdktool/cloud-sdk:302.0.0-slim",
             # The shell image must allow root in order to create directories and copy files to PVCs.
             # cgr.dev/chainguard/busybox as of April 14 2022
             # image shall not contains tag, so it will be supported on a runtime like cri-o
-            "-shell-image", "cgr.dev/chainguard/busybox@sha256:19f02276bf8dbdd62f069b922f10c65262cc34b710eea26ff928129a736be791",
+            "-shell-image", "v2-zcr.cloudzcp.io/cloudzcp-public/chainguard/busybox:latest",
             # for script mode to work with windows we need a powershell image
             # pinning to nanoserver tag as of July 15 2021
             "-shell-image-win", "mcr.microsoft.com/powershell:nanoserver@sha256:b6d5ff841b78bdf2dfed7550000fd4f3437385b8fa686ec0f010be24777654d6"]
@@ -1916,7 +1916,7 @@ metadata:
     app: tekton-pipelines-controller
     version: "v0.41.0"
   name: tekton-pipelines-controller
-  namespace: tekton-pipelines
+  namespace: cicd
 spec:
   ports:
     - name: http-metrics
@@ -1949,15 +1949,17 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: tekton-pipelines-resolvers
-  labels:
-    app.kubernetes.io/component: resolvers
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/part-of: tekton-pipelines
-    pod-security.kubernetes.io/enforce: restricted
+# Skip to use cicd namespace
+#
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: tekton-pipelines-resolvers
+#  labels:
+#    app.kubernetes.io/component: resolvers
+#    app.kubernetes.io/instance: default
+#    app.kubernetes.io/part-of: tekton-pipelines
+#    pod-security.kubernetes.io/enforce: restricted
 
 ---
 # Copyright 2022 The Tekton Authors
@@ -2014,7 +2016,7 @@ kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: tekton-pipelines-resolvers-namespace-rbac
-  namespace: tekton-pipelines-resolvers
+  namespace: cicd
   labels:
     app.kubernetes.io/component: resolvers
     app.kubernetes.io/instance: default
@@ -2048,7 +2050,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: tekton-pipelines-resolvers
-  namespace: tekton-pipelines-resolvers
+  namespace: cicd
   labels:
     app.kubernetes.io/component: resolvers
     app.kubernetes.io/instance: default
@@ -2073,7 +2075,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: tekton-pipelines-resolvers
-  namespace: tekton-pipelines-resolvers
+  namespace: cicd
   labels:
     app.kubernetes.io/component: resolvers
     app.kubernetes.io/instance: default
@@ -2081,7 +2083,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tekton-pipelines-resolvers
-    namespace: tekton-pipelines-resolvers
+    namespace: cicd
 roleRef:
   kind: ClusterRole
   name: tekton-pipelines-resolvers-resolution-request-updates
@@ -2106,7 +2108,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: tekton-pipelines-resolvers-namespace-rbac
-  namespace: tekton-pipelines-resolvers
+  namespace: cicd
   labels:
     app.kubernetes.io/component: resolvers
     app.kubernetes.io/instance: default
@@ -2114,7 +2116,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tekton-pipelines-resolvers
-    namespace: tekton-pipelines-resolvers
+    namespace: cicd
 roleRef:
   kind: Role
   name: tekton-pipelines-resolvers-namespace-rbac
@@ -2139,7 +2141,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: bundleresolver-config
-  namespace: tekton-pipelines-resolvers
+  namespace: cicd
   labels:
     app.kubernetes.io/component: resolvers
     app.kubernetes.io/instance: default
@@ -2169,7 +2171,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cluster-resolver-config
-  namespace: tekton-pipelines-resolvers
+  namespace: cicd
   labels:
     app.kubernetes.io/component: resolvers
     app.kubernetes.io/instance: default
@@ -2203,7 +2205,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: resolvers-feature-flags
-  namespace: tekton-pipelines-resolvers
+  namespace: cicd
   labels:
     app.kubernetes.io/component: resolvers
     app.kubernetes.io/instance: default
@@ -2236,8 +2238,8 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: config-leader-election
-  namespace: tekton-pipelines-resolvers
+  name: config-resolvers-leader-election
+  namespace: cicd
   labels:
     app.kubernetes.io/component: resolvers
     app.kubernetes.io/instance: default
@@ -2292,7 +2294,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-logging
-  namespace: tekton-pipelines-resolvers
+  namespace: cicd
   labels:
     app.kubernetes.io/component: resolvers
     app.kubernetes.io/instance: default
@@ -2346,7 +2348,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-observability
-  namespace: tekton-pipelines-resolvers
+  namespace: cicd
   labels:
     app.kubernetes.io/component: resolvers
     app.kubernetes.io/instance: default
@@ -2438,7 +2440,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: git-resolver-config
-  namespace: tekton-pipelines-resolvers
+  namespace: cicd
   labels:
     app.kubernetes.io/component: resolvers
     app.kubernetes.io/instance: default
@@ -2483,7 +2485,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: hubresolver-config
-  namespace: tekton-pipelines-resolvers
+  namespace: cicd
   labels:
     app.kubernetes.io/component: resolvers
     app.kubernetes.io/instance: default
@@ -2518,7 +2520,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tekton-pipelines-remote-resolvers
-  namespace: tekton-pipelines-resolvers
+  namespace: cicd
   labels:
     app.kubernetes.io/name: resolvers
     app.kubernetes.io/component: resolvers
@@ -2566,7 +2568,7 @@ spec:
       serviceAccountName: tekton-pipelines-resolvers
       containers:
         - name: controller
-          image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/resolvers:v0.41.0@sha256:de08fa01e521144d9852dd14fe64f75da0b471c7379b0f721043f69fc86a8647
+          image: v2-zcr.cloudzcp.io/cloudzcp-public/tekton-releases/github.com/tektoncd/pipeline/cmd/resolvers:v0.41.0
           resources:
             requests:
               cpu: 100m
@@ -2592,7 +2594,7 @@ spec:
             - name: CONFIG_FEATURE_FLAGS_NAME
               value: feature-flags
             - name: CONFIG_LEADERELECTION_NAME
-              value: config-leader-election
+              value: config-resolvers-leader-election
             - name: METRICS_DOMAIN
               value: tekton.dev/resolution
             # Override this env var to set a private hub api endpoint
@@ -2627,7 +2629,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: tekton-pipelines-webhook
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/name: webhook
     app.kubernetes.io/component: webhook
@@ -2675,7 +2677,7 @@ metadata:
   # config/400-webhook-service.yaml. If you change this name, you must also
   # change the value of WEBHOOK_SERVICE_NAME below.
   name: tekton-pipelines-webhook
-  namespace: tekton-pipelines
+  namespace: cicd
   labels:
     app.kubernetes.io/name: webhook
     app.kubernetes.io/component: webhook
@@ -2732,7 +2734,7 @@ spec:
         - name: webhook
           # This is the Go import path for the binary that is containerized
           # and substituted here.
-          image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:v0.41.0@sha256:f4e766d21b0ea2735f487888c0155c9d8287f04ac77a4948a616250d24175475
+          image: v2-zcr.cloudzcp.io/cloudzcp-public/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:v0.41.0
           # Resource request required for autoscaler to take any action for a metric
           resources:
             requests:
@@ -2815,7 +2817,7 @@ metadata:
     app: tekton-pipelines-webhook
     version: "v0.41.0"
   name: tekton-pipelines-webhook
-  namespace: tekton-pipelines
+  namespace: cicd
 spec:
   ports:
     # Define metrics and profiling for them to be accessible within service meshes.
